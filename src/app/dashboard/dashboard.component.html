@@ -1,0 +1,11 @@
+<h3>Top impacts</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let impact of impacts" class="col-1-4"
+      routerLink="/detail/{{impact.id}}">
+    <div class="module impact">
+      <h4>{{impact.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-impact-search></app-impact-search>

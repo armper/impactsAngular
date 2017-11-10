@@ -1,0 +1,44 @@
+
+<table class="zui-table zui-table-rounded">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Status</th>
+			<th>Briefing</th>
+			<th>Briefing Time</th>
+			<th>Actions</th>
+			<th>Website</th>
+			<th>Population</th>
+			<th>Time To Shelter</th>
+			<th>Begin Alerting</th>
+			<th>Stop Alerting</th>
+			<th>Notes</th>
+			<th>Impact Time</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<tr *ngFor="let impact of impacts">
+			<td>{{impact.name | titlecase }}</td>
+			<td>{{impact.status | titlecase }}</td>
+			<td>{{impact.requiresBriefing}}</td>
+			<td>{{impact.briefingTime}}</td>
+			<td>{{impact.actions | titlecase}}</td>
+			<td><a href="{{impact.website}}">{{impact.website}}</a></td>
+			<td>{{impact.population}}</td>
+			<td>{{impact.timeToShelter}}</td>
+			<td>{{impact.beginAlerting}}</td>
+			<td>{{impact.stopAlerting}}</td>
+			<td>{{impact.notes | titlecase}}</td>
+			<td>{{impact.impactTime}}</td>
+		</tr>
+
+	</tbody>
+
+</table>
+
+<div *ngIf="selectedImpact">
+	<h2>{{selectedImpact.name | titlecase}} is name</h2>
+	<button (click)="gotoDetail()">View Details</button>
+</div>
