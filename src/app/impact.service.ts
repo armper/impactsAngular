@@ -24,7 +24,9 @@ export class ImpactService {
 
   /** GET impacts from the server */
   getImpacts(): Observable<Impact[]> {
-    return this.http.get<Impact[]>(this.impactsUrl)
+    const url = `${this.impactsUrl}/impacts`;
+
+    return this.http.get<Impact[]>(url)
       .pipe(
       tap(impacts => {
         this.log(`fetched impacts ` + impacts.length);
@@ -40,7 +42,7 @@ export class ImpactService {
     return this.http.get<Impact[]>(url)
       .pipe(
       tap(impacts => {
-        this.log(`fetched impacts by nws office`+office + impacts.length);
+        this.log(`fetched impacts by nws office` + office + impacts.length);
         impacts.forEach(i => console.log(i.name))
       }),
       catchError(this.handleError('getimpacts', []))

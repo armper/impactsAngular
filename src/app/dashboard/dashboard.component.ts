@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private impactService: ImpactService) {}
 
   ngOnInit() {
-    this.getImpacts('ABQ');
+    this.getImpacts('MPX');
   }
 
   getImpacts(office): void {

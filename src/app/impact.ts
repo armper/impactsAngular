@@ -1,4 +1,5 @@
 
+import { ImpactThresholdSet } from './entities/ImpactThresholdSets/impactthresholdset';
 import {Contact} from './entities/contact/contact';
 import {NwsOffice} from './entities/nwsOffice/nwsOffice';
 
@@ -43,6 +44,7 @@ export class Impact {
 
   briefingTime: Date;
 
+  impactThresholdSets: ImpactThresholdSet;
 
   //  /** The set containing the thresholds for this impact */
   //  @BatchSize(size = 20)
