@@ -1,57 +1,121 @@
 <form [formGroup]="impactForm" (ngSubmit)="onSubmit()" novalidate>
 
   <div style="margin-bottom: 1em">
-    <button type="submit"
-            [disabled]="impactForm.pristine" class="btn btn-success">Save</button> &nbsp;
-    <button type="reset" (click)="revert()"
-            [disabled]="impactForm.pristine" class="btn btn-danger">Revert</button>
+    <button type="submit" [disabled]="impactForm.pristine" class="btn btn-success">Save</button> &nbsp;
+    <button type="reset" (click)="revert()" [disabled]="impactForm.pristine" class="btn btn-danger">Revert</button>
   </div>
-  
+  <fieldset>
+    <div class="form-group">
+
+      <label>Name:
+        <input formControlName="name">
+      </label>
+    </div>
+    <div class="form-group">
+
+      <label>Notes:
+        <textarea formControlName="notes"></textarea>
+      </label>
+    </div>
+
+
+  </fieldset>
+
   <div class="form-group">
-    <label class="center-block">Name:
-      <input class="form-control" formControlName="name">
-    </label>
+    <fieldset>
+      <legend>Briefing</legend>
+
+      <label>Briefing Required:
+        <input type="checkbox" formControlName="requiresBriefing">
+      </label>
+      <label>Briefing Time:
+        <input type="datetime-local" formControlName="briefingTime">
+      </label>
+    </fieldset>
+
   </div>
 
   <div class="form-group">
-    <label class="center-block">Notes:
-      <textarea  class="form-control" formControlName="notes"></textarea>
+    <fieldset>
+      <legend>Miscelanious</legend>
+      <label>Website:
+        <input formControlName="website">
+      </label>
+    </fieldset>
+  </div>
 
-    </label>
+  <fieldset>
+      
+  <div class="form-group">
+      <legend>Threshold Evaluation</legend>
+
+      <label>Begin:
+        <input formControlName="beginAlerting">
+      </label>
+      <label>End:
+        <input formControlName="stopAlerting">
+      </label>
+
   </div>
 
   <div class="form-group">
-    <label class="center-block">Status:
-      <select class="form-control" formControlName="status">
+      
+        <label>Time to Shelter:
+          <input formControlName="timeToShelter">
+        </label>
+        <label>Population:
+          <input formControlName="population">
+        </label>
+    </div>
+</fieldset>
+
+ 
+<div class="form-group">
+    <fieldset>
+      <legend>Contact Information</legend>
+     
+    </fieldset>
+  </div>
+
+
+  <div class="form-group">
+    <label>Status:
+      <select formControlName="status">
         <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
       </select>
     </label>
   </div>
 
-  <div formArrayName="impactThresholdSets" class="well well-lg">
-    <div *ngFor="let impactThresholdSet of impactThresholdSets.controls; let id=index" [formGroupName]="id">
-      <!-- The repeated address template -->
-      <h4>Threshold #{{id + 1}}</h4>
-      <div style="margin-left: 1em;">
-        <div class="form-group">
-          <label class="center-block">Name:
-            <input class="form-control" formControlName="name">
-          </label>
-        </div>
-        <br>
+  <fieldset>
+    <legend>Threshold Set</legend>
 
-        <div class="form-group">
-          <label class="center-block">Severity:
-            <input class="form-control" formControlName="severity">
-          </label>
+    <div formArrayName="impactThresholdSets" class="well well-lg">
+
+      <div *ngFor="let impactThresholdSet of impactThresholdSets.controls; let id=index" [formGroupName]="id">
+        <!-- The repeated address template -->
+        <h4>Threshold #{{id + 1}}</h4>
+        <div style="margin-left: 1em;">
+          <div class="form-group">
+            <label>Name:
+              <input formControlName="name">
+            </label>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label>Severity:
+              <input formControlName="severity">
+            </label>
+          </div>
+          <br>
+          <!-- End of the repeated address template -->
         </div>
-        <br>
-        <!-- End of the repeated address template -->
       </div>
+      <button (click)="addImpactThresholdSet()" type="button">Add an Impact Threshold</button>
+
     </div>
-    <button (click)="addImpactThresholdSet()" type="button">Add an Impact Threshold</button>
-    
-  </div>
+
+  </fieldset>
 </form>
 
 {{impactForm.value | json}}

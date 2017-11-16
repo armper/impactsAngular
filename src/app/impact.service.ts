@@ -1,4 +1,4 @@
-import {NwsOffice} from './entities/nwsOffice/nwsOffice';
+import { NwsOffice } from './entities/nwsOffice/nwsOffice';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -67,7 +67,9 @@ export class ImpactService {
   getImpact(id: number): Observable<Impact> {
     const url = `${this.impactsUrl}/${id}`;
     return this.http.get<Impact>(url).pipe(
-      tap(impact => this.log(`fetched impact id=${id}, threshold = `+impact.impactThresholdSets[0].name)),
+      tap(impact => {
+        this.log(`fetched impact id=${id}, threshold = `+impact.impactThresholdSets[0].name);        
+      }),
       catchError(this.handleError<Impact>(`getImpact id=${id}`))
     );
   }

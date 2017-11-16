@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { ImpactThresholdSet } from '../../entities/ImpactThresholdSets/impactthresholdset';
 import { ImpactThresholdSet } from './../../entities/ImpactThresholdSets/impactthresholdset';
+import { NwsOffice } from './../../entities/nwsOffice/nwsOffice';
 
 @Component({
   selector: 'app-impact-editor',
@@ -41,9 +42,40 @@ export class ImpactEditorComponent implements OnInit {
       id: '',
       name: ['', Validators.required],
       status: ['', Validators.required],
-      notes:'',
+      notes: '',
+
+      impactTime: 'rrule',
+
+      impactAttributes: '',
+
+      requiresOnSiteSupport: '',
+
+      briefingApproved: '',
+
+      onSiteSupportApproved: '',
+
+      // contact?: Contact;
+
+      nwsOffice: '',
+
+      actions: '',
+
+      website: '',
+
+      population: '',
+
+      timeToShelter: '',
+
+      beginAlerting: '',
+
+      stopAlerting: '',
+
+      requiresBriefing: '',
+
+      briefingTime: '',
+
       impactThresholdSets: this.fb.array([]),
-      severity:''
+
     });
   }
   getImpact(id) {
@@ -60,10 +92,10 @@ export class ImpactEditorComponent implements OnInit {
       {
         name: this.impact.name,
         status: this.impact.status,
-        notes: this.impact.notes        
+        notes: this.impact.notes
       });
 
-      this.setImpactThresholdSets(this.impact.impactThresholdSets);
+    this.setImpactThresholdSets(this.impact.impactThresholdSets);
   }
 
   setImpactThresholdSets(impactThresholdSets: ImpactThresholdSet[]) {
@@ -94,13 +126,15 @@ export class ImpactEditorComponent implements OnInit {
       (impactThresholdSet: ImpactThresholdSet) => Object.assign({}, impactThresholdSet)
     );
 
-    // return new `Hero` object containing a combination of original hero value(s)
+    // return new `Impact` object containing a combination of original Impact value(s)
     // and deep copies of changed form model values
     const saveImpact: Impact = {
       id: this.impact.id,
       name: formModel.name as string,
       status: formModel.status as string,
       lastModified: new Date(),
+      nwsOffice:{name:'ABQ'},
+      impactTime:'rrule',
 
       // addresses: formModel.secretLairs // <-- bad!
       impactThresholdSets: impactThresholdSetsDeepCopy
@@ -108,8 +142,8 @@ export class ImpactEditorComponent implements OnInit {
     return saveImpact;
   }
 
-  revert() { 
-    this.ngOnChanges(); 
+  revert() {
+    this.ngOnChanges();
   }
-  
+
 }    

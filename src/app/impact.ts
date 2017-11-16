@@ -9,7 +9,7 @@ export class Impact {
 
   name: string='';
 
-  impactTime?: string;
+  impactTime: string;
 
   impactAttributes?: string;
 
@@ -21,7 +21,7 @@ export class Impact {
 
   // contact?: Contact;
 
-  nwsOffice?: NwsOffice;
+  nwsOffice: NwsOffice;
 
   lastModified: Date = new Date();
 
