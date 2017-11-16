@@ -37,7 +37,11 @@
 
 	</tbody>
 
-</table>/ 
+</table>
+
+<nav>
+    <a routerLink="/editImpact" routerLinkActive="active">Edit Impact</a>
+  </nav>
 
 <div *ngIf="selectedImpact">
 	<h2>{{selectedImpact.name | titlecase}} is name</h2>

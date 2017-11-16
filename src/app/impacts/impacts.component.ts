@@ -9,7 +9,7 @@ import {ImpactService} from '../impact.service';
   templateUrl: './impacts.component.html',
   styleUrls: ['./impacts.component.css']
 })
-export class impactsComponent implements OnInit {
+export class ImpactsComponent implements OnInit {
   impacts: Impact[];
 
   constructor(private impactService: ImpactService) {}

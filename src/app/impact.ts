@@ -1,74 +1,49 @@
 
 import { ImpactThresholdSet } from './entities/ImpactThresholdSets/impactthresholdset';
-import {Contact} from './entities/contact/contact';
-import {NwsOffice} from './entities/nwsOffice/nwsOffice';
+import { NwsOffice } from './entities/nwsOffice/nwsOffice';
 
 export class Impact {
   id: number;
 
-  name: string;
+  status: string;
 
-  impactTime: string;
+  name: string='';
 
-  impactAttributes: string;
+  impactTime?: string;
 
-  status: ImpactStatus;
+  impactAttributes?: string;
 
-  requiresOnSiteSupport: boolean;
+  requiresOnSiteSupport?: boolean;
 
-  briefingApproved: boolean;
+  briefingApproved?: boolean;
 
-  onSiteSupportApproved: boolean;
+  onSiteSupportApproved?: boolean;
 
-  contact: Contact;
+  // contact?: Contact;
 
-  nwsOffice: NwsOffice;
+  nwsOffice?: NwsOffice;
 
-  lastModified: Date;
+  lastModified: Date = new Date();
 
-  actions: string;
+  actions?: string;
 
-  website: string;
+  website?: string;
 
-  population: number;
+  population?: number;
 
-  timeToShelter: number;
+  timeToShelter?: number;
 
-  beginAlerting: number;
+  beginAlerting?: number;
 
-  stopAlerting: number;
+  stopAlerting?: number;
 
-  notes: string;
+  notes?: string;
 
-  requiresBriefing: boolean;
+  requiresBriefing?: boolean;
 
-  briefingTime: Date;
+  briefingTime?: Date;
 
-  impactThresholdSets: ImpactThresholdSet;
-
-  //  /** The set containing the thresholds for this impact */
-  //  @BatchSize(size = 20)
-  //  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH})
-  //  @JoinTable(schema = "impact", name = "impact_to_impact_threshold", joinColumns = @JoinColumn(name = "impact_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "impact_threshold_id", referencedColumnName = "id"))
-  //  private Set<ImpactThresholdSet> impactThresholdSets = new HashSet<ImpactThresholdSet>();
-  //
-  //  /** The set containing the locations for this impact */
-  //  @BatchSize(size = 20)
-  //  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH})
-  //  @JoinTable(schema = "impact", name = "impact_to_location", joinColumns = @JoinColumn(name = "impact_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "location_id", referencedColumnName = "id"))
-  //  private Set<Location> locations = new HashSet<Location>();
-  //
-  //  /** The set containing the points of contact for this impact. */
-  //  @BatchSize(size = 20)
-  //  @OneToMany(fetch = FetchType.LAZY, cascade = {
-  //    CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE,
-  //    CascadeType.REFRESH
-  //  }, mappedBy = "impact")
-  //  private Set<ImpactPointsOfContact> pointsOfContact = new HashSet<ImpactPointsOfContact>();
-  //
-
+  impactThresholdSets?: ImpactThresholdSet[];
 }
 
-export enum ImpactStatus {
-  PENDING, APPROVED, DENIED, SA
-}
+export const statuses = ['APPROVED', 'DENIED', 'SA', 'PENDING'];

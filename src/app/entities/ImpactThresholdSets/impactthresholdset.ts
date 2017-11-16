@@ -1,4 +1,5 @@
 export class ImpactThresholdSet {
-  id:number;
-  name:string;
+  id: number;
+  name: string='';
+  severity: string='';
 }

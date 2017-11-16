@@ -1,0 +1,61 @@
+<form [formGroup]="impactForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <div style="margin-bottom: 1em">
+    <button type="submit"
+            [disabled]="impactForm.pristine" class="btn btn-success">Save</button> &nbsp;
+    <button type="reset" (click)="revert()"
+            [disabled]="impactForm.pristine" class="btn btn-danger">Revert</button>
+  </div>
+  
+  <div class="form-group">
+    <label class="center-block">Name:
+      <input class="form-control" formControlName="name">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="center-block">Notes:
+      <textarea  class="form-control" formControlName="notes"></textarea>
+
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="center-block">Status:
+      <select class="form-control" formControlName="status">
+        <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div formArrayName="impactThresholdSets" class="well well-lg">
+    <div *ngFor="let impactThresholdSet of impactThresholdSets.controls; let id=index" [formGroupName]="id">
+      <!-- The repeated address template -->
+      <h4>Threshold #{{id + 1}}</h4>
+      <div style="margin-left: 1em;">
+        <div class="form-group">
+          <label class="center-block">Name:
+            <input class="form-control" formControlName="name">
+          </label>
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label class="center-block">Severity:
+            <input class="form-control" formControlName="severity">
+          </label>
+        </div>
+        <br>
+        <!-- End of the repeated address template -->
+      </div>
+    </div>
+    <button (click)="addImpactThresholdSet()" type="button">Add an Impact Threshold</button>
+    
+  </div>
+</form>
+
+{{impactForm.value | json}}
+<p>Name value: {{ impactForm.get('name').value }}</p>
+<p>Status value: {{ impactForm.get('status').value }}</p>
+
+<p>Form status: {{ impactForm.status | titlecase }}</p>

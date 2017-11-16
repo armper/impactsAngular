@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class ImpactService {
 
-  private impactsUrl = 'http://localhost:8009/api';  // URL to web api
+  private impactsUrl = 'http://localhost:8009/api/impacts';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -67,7 +67,7 @@ export class ImpactService {
   getImpact(id: number): Observable<Impact> {
     const url = `${this.impactsUrl}/${id}`;
     return this.http.get<Impact>(url).pipe(
-      tap(_ => this.log(`fetched impact id=${id}`)),
+      tap(impact => this.log(`fetched impact id=${id}, threshold = `+impact.impactThresholdSets[0].name)),
       catchError(this.handleError<Impact>(`getImpact id=${id}`))
     );
   }

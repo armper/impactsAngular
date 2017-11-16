@@ -11,26 +11,31 @@ import { AppRoutingModule }     from './app-routing.module';
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ImpactDetailComponent }  from './impact-detail/impact-detail.component';
-import { impactsComponent }      from './impacts/impacts.component';
+import { ImpactsComponent }      from './impacts/impacts.component';
 import { ImpactSearchComponent }  from './impact-search/impact-search.component';
 import { ImpactService }          from './impact.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
+import { ImpactEditorComponent } from './impacts/editor/impact.editor.component';
+import { ReactiveFormsModule } from '@angular/forms'; 
+
 
 @NgModule({
   imports: [
-    BrowserModule,
+  BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    impactsComponent,
+    ImpactsComponent,
     ImpactDetailComponent,
     MessagesComponent,
-    ImpactSearchComponent
+    ImpactSearchComponent,
+    ImpactEditorComponent
   ],
   providers: [ ImpactService, MessageService ],
   bootstrap: [ AppComponent ]
