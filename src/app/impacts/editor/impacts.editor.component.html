@@ -4,6 +4,18 @@
     <button type="submit" [disabled]="impactForm.pristine" class="btn btn-success">Save</button> &nbsp;
     <button type="reset" (click)="revert()" [disabled]="impactForm.pristine" class="btn btn-danger">Revert</button>
   </div>
+
+
+  <div class="form-group" formGroupName="nwsOffice">
+    <fieldset>
+      <legend>nwsOffice</legend>
+      <label>nwsOffice:
+        <input formControlName="name">
+      </label>
+    </fieldset>
+  </div>
+
+
   <fieldset>
     <div class="form-group">
 
@@ -45,8 +57,8 @@
   </div>
 
   <fieldset>
-      
-  <div class="form-group">
+
+    <div class="form-group">
       <legend>Threshold Evaluation</legend>
 
       <label>Begin:
@@ -56,34 +68,45 @@
         <input formControlName="stopAlerting">
       </label>
 
-  </div>
+    </div>
+
+    <div class="form-group">
+
+      <label>Time to Shelter:
+        <input formControlName="timeToShelter">
+      </label>
+      <label>Population:
+        <input formControlName="population">
+      </label>
+    </div>
+  </fieldset>
+
 
   <div class="form-group">
-      
-        <label>Time to Shelter:
-          <input formControlName="timeToShelter">
-        </label>
-        <label>Population:
-          <input formControlName="population">
-        </label>
-    </div>
-</fieldset>
-
- 
-<div class="form-group">
     <fieldset>
       <legend>Contact Information</legend>
-     
+
     </fieldset>
   </div>
 
+  <div class="form-group">
+    <fieldset>
+      <legend>Date and Time</legend>
+      <label>Repeat:
+        <input formControlName="impactTime">
+      </label>
+    </fieldset>
+  </div>
 
   <div class="form-group">
-    <label>Status:
+    <fieldset>
+      <legend>Save</legend>
+      <label>Status:
       <select formControlName="status">
         <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
       </select>
     </label>
+    </fieldset>
   </div>
 
   <fieldset>
@@ -105,6 +128,12 @@
           <div class="form-group">
             <label>Severity:
               <input formControlName="severity">
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>NwsOffice:
+              <input formControlName="nwsOffice">
             </label>
           </div>
           <br>
